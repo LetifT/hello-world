@@ -13,7 +13,7 @@ def train(df):
     clf = LogisticRegression().fit(x, y)
 
     clf_api = os.environ['CLF_API']
-    if repo_clf:
+    if clf_api:
         clf.save(os.path.join(clf_api), "classifier")
 
     if type(classifier) == LogisticRegression:

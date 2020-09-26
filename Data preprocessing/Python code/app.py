@@ -1,14 +1,15 @@
 from flask import Flask, request
 
+from pre_processing import read_json
 app = Flask(__name__)
-app.config["DEBUG"] = True
 
 @app.route('/pre-processing/<db>', methods = ['POST'])
-def read_json(db):
-    data = request.get_json()
+def select_sample(db):
+    data = read_json(db)
 
-    return 'Hello'
+    #Pre-processing steps ....
 
-if __name__ == "__main__":
-    app.run(debug=True)
-    app.run(host='0.0.0.0', port=5000)
+    return data
+
+app.run(debug=True)
+app.run(host='0.0.0.0', port=5000)
