@@ -1,0 +1,27 @@
+For every container,
+
+python code
+image creation (dockerfile)
+creation container in kubernetes
+
+
+
+Idea for dividing:
+//python code
+Ashley
+Tumsa
+Jeroen
+
+
+//image creation (dockerfile)
+Jeroen 
+Sophia 
+
+//creation container in kubernetes 
+Gaby
+Sietske
+Jeroen
+
+//Report
+Sophia
+Jeroen
