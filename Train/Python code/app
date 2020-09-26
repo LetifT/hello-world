@@ -1,0 +1,14 @@
+import os
+import pandas as pd
+import request
+from resources import train_classifier
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/train/<classifier>', method = ['POST'])
+def train_classifier(clf):
+    data_api = os.environ['DATA_API']
+    data = request.get(data_api).json
+
+    train_classifier.train(pd.DataFrame.from_dict(data))
