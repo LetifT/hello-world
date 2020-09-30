@@ -1,7 +1,8 @@
 from sklearn.linear_model import LogisticRegression
 
 def predict(df):
-    clf_api = os.environ['CLF_API']
+    #clf_api = os.environ['CLF_API']
+
     if clf_api:
 
         #Load model from envir var

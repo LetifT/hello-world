@@ -8,7 +8,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 # Copy all files in training-db local host directory to /usr/src/myapp in Docker container
 COPY . .
-# Expose the port that our app runs in
+# Expose the port that our app.py runs in
 EXPOSE 5000
 # Enviroment Variables
 ENV DATA_REPO  /usr/src/myapp/data
@@ -18,4 +18,4 @@ CMD ["python3","app.py"]
 # We can also use an ENTRYPOINT and a CMD
 # Run our App
 #ENTRYPOINT ["python3"]
-#CMD ["app.py"]
+#CMD ["app.py.py"]

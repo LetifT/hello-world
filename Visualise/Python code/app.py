@@ -16,7 +16,7 @@ def visualisation():
         plt = figure.add_subplot(1,1,1)
         plt.plot(x,y)
         result = io.BytesIO()
-        FigureCanvasAgg(plt).print_png(result)
+        figureCanvasAgg(plt).print_png(result)
         resp = make_response(result.getvalue())
         resp.mimetype = 'image/png'
         return resp

@@ -8,7 +8,7 @@ def read_json(db):
     data = request.get_json()
     return data
 
-def load_data():
+def load_data(db):
     fmnist = openml.datasets.get_dataset(40996)
     X, y, _, _ = fmnist.get_data(target=fmnist.default_target_attribute)
     y = y.astype(int)
@@ -19,7 +19,7 @@ def load_data():
 
 
     #save data to locataion (local solution)
-    my_data_file = open('data.txt', 'x')
+    my_data_file = open('data.json', 'x')
     json.dump(parsed_data, my_data_file)
     return json.dumps({'message': 'The data was saved locally.'},
                       sort_keys=False, indent=4), 200
