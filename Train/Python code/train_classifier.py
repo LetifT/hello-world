@@ -2,6 +2,9 @@
 # Train logistic regression model
 from sklearn.linear_model import LogisticRegression
 def train(df):
+    data_repo = data.txt #os.environ['DATA_REPO']
+    df = pd.read_json(data_repo)
+
 
     # Select features
     x = df.loc[:, df.columns != 'labels']
