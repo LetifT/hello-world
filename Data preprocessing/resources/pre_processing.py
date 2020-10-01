@@ -14,6 +14,7 @@ def load_data(db):
     y = y.astype(int)
     df = X
     df["labels"] = y
+    print(df)
     data = df.to_json(orient="split")
     parsed_data = json.loads(data)
 

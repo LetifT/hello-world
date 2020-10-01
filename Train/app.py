@@ -1,5 +1,4 @@
-import os
-import pandas as pd
+
 
 from flask import Flask, request
 from resources.train_classifier import train
