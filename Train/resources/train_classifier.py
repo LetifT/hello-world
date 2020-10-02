@@ -19,15 +19,18 @@ def train(clf):
 
     # Select label
     y = df['labels']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size= 0.9)
+    X_train, X_validate, y_train, y_validate = train_test_split(X, y, train_size= 0.9)
 
     #train model
     clf = LogisticRegression().fit(X_train, y_train)
-    y_pred = clf.predict(X_test)
-    accuracy = accuracy_score(y_pred, y_test)
-    dump(clf, 'clf.joblib')
+    y_pred_test = clf.predict(X_validate)
+    y_pred_train = clf.predict(X_train)
+    accuracy_test = accuracy_score(y_pred, y_validate)
+    accuracy_train = accuracy_score(y_pred_train, y_validate)
+    dump(clf, '/Visualise/clf.joblib')
     return json.dumps({'message': 'The model was saved locally.',
-                       'accuracy test':  accuracy}, sort_keys=False, indent=4), 200
+                       'accuracy test':  accuracy_test,
+                       'accuracy train': accuracy_train}, sort_keys=False, indent=4), 200
 
     """
     clf_api = os.environ['CLF_API']

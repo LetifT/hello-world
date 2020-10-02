@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-from resources.pre_processing import read_json, load_data
+from resources.pre_processing import load_data
 app = Flask(__name__)
 
 
