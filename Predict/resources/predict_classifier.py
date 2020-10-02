@@ -1,21 +1,35 @@
 from sklearn.linear_model import LogisticRegression
 
-def predict(df):
+import json
+
+def predict(df,clf):
     #clf_api = os.environ['CLF_API']
 
-    if clf_api:
+    #Load model from envir var
 
-        #Load model from envir var
-        clf = load.model(os.path.join(clf_api))
+    X_test = df.loc[:, df.columns != 'labels']
 
-        # Predict and put it in the right format
-        pred = list(clf.predict(x))
-        pred_dict= {'labels_pred': pred}
+    # Select label
+    y_test = df['labels']
 
-        pred_api = os.environ['PRED_API']
+    # Predict and put it in the right format
+    pred = list(clf.predict(X_test))
+    pred_dict= {'labels_pred': pred}
+
+    #pred_api = os.environ['PRED_API']
+    json.dump(pred_dict, open('prediction.json', 'w'))
+    return json.dumps({'message': 'The predictions were saved locally.',
+                        'prediction': pred_dict['labels_pred'],
+                        'real': y_test}, sort_keys=False, indent=4), 200
+
+    """    
+
         if pred_api:
             pred.save(os.path.join(pred_api), "predictions")
             return 'Model predictions are created'
 
     else:
+
         return "Model can't be found"
+        
+    """
