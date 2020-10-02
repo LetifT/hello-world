@@ -1,4 +1,5 @@
 from sklearn.linear_model import LogisticRegression
+
 import json
 
 def predict(df,clf):
@@ -22,11 +23,13 @@ def predict(df,clf):
                         'real': y_test}, sort_keys=False, indent=4), 200
 
     """    
+
         if pred_api:
             pred.save(os.path.join(pred_api), "predictions")
             return 'Model predictions are created'
 
     else:
+
         return "Model can't be found"
         
     """

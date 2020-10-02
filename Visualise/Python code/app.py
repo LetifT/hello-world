@@ -18,7 +18,9 @@ def visualisation():
         f.plot(x,y)
 
         result = io.BytesIO()
+
         FigureCanvasAgg(figure).print_png(result)
+
         resp = make_response(result.getvalue())
         resp.mimetype = 'image/png'
         return resp
