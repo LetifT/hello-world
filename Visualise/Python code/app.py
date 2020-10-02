@@ -1,4 +1,5 @@
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, Response
+import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 import io
@@ -13,10 +14,11 @@ def visualisation():
         x = [1,2,3,4,5]
         y = [2,2,2,2,2]
 
-        plt = figure.add_subplot(1,1,1)
-        plt.plot(x,y)
+        f = figure.add_subplot(1,1,1)
+        f.plot(x,y)
+
         result = io.BytesIO()
-        FigureCanvasAgg(plt).print_png(result)
+        FigureCanvasAgg(figure).print_png(result)
         resp = make_response(result.getvalue())
         resp.mimetype = 'image/png'
         return resp
