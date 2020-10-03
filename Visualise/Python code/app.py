@@ -25,5 +25,5 @@ def visualisation():
         resp.mimetype = 'image/png'
         return resp
 
-app.run(debug=True)
+app.config["DEBUG"] = True
 app.run(host='0.0.0.0', port=5000)
