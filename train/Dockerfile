@@ -12,7 +12,7 @@ COPY . .
 EXPOSE 5000
 # Enviroment Variables
 ENV MODEL_REPO /usr/src/myapp/model
-ENV DATA_API  http://data_container:5000/data_container/table_name
+ENV DATA_API  http://192.168.1.122:5000/data_container/test
 # Run our App
 CMD ["python3","app.py"]
 

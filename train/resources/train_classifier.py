@@ -3,7 +3,7 @@
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-from joblib import dump, load
+from joblib import dump
 import os
 import pandas as pd
 import json
@@ -25,19 +25,18 @@ def train(df):
     clf = LogisticRegression().fit(X_train, y_train)
     y_pred_test = clf.predict(X_validate)
     y_pred_train = clf.predict(X_train)
-    accuracy_test = accuracy_score(y_pred, y_validate)
-    accuracy_train = accuracy_score(y_pred_train, y_validate)
-    dump(clf, '/Visualise/clf.joblib')
-    return json.dumps({'message': 'The model was saved locally.',
-                       'accuracy test':  accuracy_test,
-                       'accuracy train': accuracy_train}, sort_keys=False, indent=4), 200
+    accuracy_test = accuracy_score(y_pred_test, y_validate)
+    accuracy_train = accuracy_score(y_pred_train, y_train)
+
 
 
     clf_api = os.environ['MODEL_REPO']
     if clf_api:
-        clf.save(os.path.join(clf_api), "classifier")
+        #dump(clf, os.path.join(clf_api, 'clf.joblib'))
+        dump(clf, 'clf.joblib')
+    return json.dumps({'message': 'The model was saved locally.',
+                       'accuracy test':  accuracy_test,
+                       'accuracy train': accuracy_train}, sort_keys=False, indent=4), 200
 
-    if type(classifier) == LogisticRegression:
-        return 'Logistic regression model is trained'
 
 

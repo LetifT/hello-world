@@ -1,6 +1,7 @@
 from sklearn.linear_model import LogisticRegression
 import os
 import json
+from joblib import load
 
 def predict(df,clf):
     #clf_api = os.environ['CLF_API']

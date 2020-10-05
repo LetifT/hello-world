@@ -1,13 +1,16 @@
-
-
-from flask import Flask, request
+from joblib import load
+import requests
+from flask import Flask, request, json
 from resources.train_classifier import train
-app = Flask(__name__)
+import pandas as pd
 
+
+app = Flask(__name__)
+import os
 @app.route('/train/<clf>', methods = ['POST'])
 def train_classifier(clf):
     data_api = os.environ['DATA_API']
-    data_json = request.get(data_api).json()
+    data_json = requests.get(data_api).json()
     df = pd.DataFrame.from_dict(data_json)
 
     message = train(df)
@@ -17,9 +20,9 @@ def train_classifier(clf):
 @app.route('/train/<clf>', methods = ['GET'])
 def get_model(clf):
     model_repo = os.environ['MODEL_REPO']
-    file_path = os.path.join(model_repo, "model.h5")
-    model = load_model(file_path)
-    return model
+    file_path = os.path.join(model_repo, "clf.joblib")
+    clf = load(file_path)
+    return clf
 
 
 app.config["DEBUG"] = True

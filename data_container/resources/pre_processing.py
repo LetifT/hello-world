@@ -41,10 +41,9 @@ def add_data_records(table_name, records):
 
 def read_data_records(table_name):
     v_table = Base.metadata.tables[table_name]
-    trans.commit()
     connection = engine.connect()
     trans = connection.begin()
-    query = db.select([v_table])
+    query = db.select([v_table]).limit(100)
     df = pd.read_sql_query(query, con=connection)
     trans.commit()
     return df
@@ -70,19 +69,24 @@ def load_data(table_name):
 
 
     #save data to locataion (local solution)
-    data = df.to_json(orient='split')
+
+    data = df.to_json(orient='records')
+
+    """"
     parsed_data = json.loads(data)
     my_data_file = open('data.json', 'x')
     json.dump(parsed_data, my_data_file)
 
     return json.dumps({'message': 'The data was saved locally.'},
-                      sort_keys=False, indent=4), 200
+                      sort_keys=False, indent=4), 200 """
 
     #save data to env location --- make exception if data is already loaded
     v_table = Base.metadata.tables[table_name]
     query = db.insert(v_table)
     connection = engine.connect()
-    records = df.values
+    records = json.loads(data)
     trans = connection.begin()
     connection.execute(query, records)
     trans.commit()
+    return json.dumps({'message': 'The data was saved locally.'},
+                      sort_keys=False, indent=4), 200
