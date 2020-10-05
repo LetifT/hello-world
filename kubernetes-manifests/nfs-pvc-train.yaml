@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeChain
+metadata:
+  name: nfs-data
+  namespace: myapps
+spec:
+  accesModes:
+  -ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  StorageClassname: nfs
