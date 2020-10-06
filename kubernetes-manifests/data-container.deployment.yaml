@@ -20,7 +20,7 @@ spec:
         name: data-container-api     # POD name
         volumeMounts:
         - mountPath: /usr/src/myapp/data
-          name: data_container-vol
+          name: data-container-vol
         ports:
         - containerPort: 5000
           protocol: TCP
