@@ -6,7 +6,7 @@ metadata:
   name: data-container
   namespace: myapps
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: data-container

@@ -6,7 +6,7 @@ metadata:
   name: predict
   namespace: myapps
 spec:
-  replicas: 1 # Creating two PODs for our app
+  replicas: 2 # Creating two PODs for our app
   selector:
     matchLabels:
       app: predict
