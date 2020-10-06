@@ -30,10 +30,11 @@ def train(df):
 
 
 
-    clf_api = os.environ['MODEL_REPO']
+    clf_REPO = os.environ['MODEL_REPO']
     if clf_api:
         #dump(clf, os.path.join(clf_api, 'clf.joblib'))
-        dump(clf, 'clf.joblib')
+        file_path = os.path.join(clf_REPO, "clf.joblib")
+        dump(clf, file_path)
     return json.dumps({'message': 'The model was saved locally.',
                        'accuracy test':  accuracy_test,
                        'accuracy train': accuracy_train}, sort_keys=False, indent=4), 200
