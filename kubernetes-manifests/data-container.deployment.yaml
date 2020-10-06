@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - image: gcr.io/light-quest-289208/data_container:0.0.1 # Docker image name, that we pushed to GCR
-        name: data_container-api     # POD name
+        name: data-container-api     # POD name
         volumeMounts:
         - mountPath: /usr/src/myapp/data
           name: data_container-vol
