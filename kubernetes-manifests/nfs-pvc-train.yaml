@@ -4,7 +4,7 @@ metadata:
   name: nfs-data
   namespace: myapps
 spec:
-  accesModes:
+  accessModes:
   - ReadWriteMany
   resources:
     requests:
