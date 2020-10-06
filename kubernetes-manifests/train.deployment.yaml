@@ -6,7 +6,7 @@ metadata:
   name: train
   namespace: myapps
 spec:
-  replicas: 1 # hoeveel pods hebben we nodig?
+  replicas: 2 # hoeveel pods hebben we nodig?
   selector:
     matchLabels:
       app: train
