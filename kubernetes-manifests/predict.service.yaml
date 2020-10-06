@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: train-service
+  name: predict-service
   labels:
-    app: train
+    app: predict
   namespace: myapps
 spec:
   type: LoadBalancer
   ports:
-  - port: 5001
+  - port: 5002
     targetPort: 5000
   selector:
-    app: train
+    app: predict

@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: train-service
+  name: data_container-service
   labels:
-    app: train
+    app: data_container
   namespace: myapps
 spec:
   type: LoadBalancer
   ports:
-  - port: 5001
+  - port: 5000
     targetPort: 5000
   selector:
-    app: train
+    app: data_container

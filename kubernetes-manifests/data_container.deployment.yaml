@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: data_container
+  name: data_container
+  namespace: myapps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data_container
+  template:
+    metadata:
+      labels:
+        app: data_container
+    spec:
+      containers:
+      - image: gcr.io/light-quest-289208/data_container:0.0.1 # Docker image name, that we pushed to GCR
+        name: data_container-api     # POD name
+        volumeMounts:
+        - mountPath: /usr/src/myapp/data
+          name: data_container-vol
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        env:
+        - name: DATA_REPO
+          value: /usr/src/myapp/data
+      volumes:
+      - name: data_container-vol
+        persistentVolumeClaim:
+          claimName: nfs-data

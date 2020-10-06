@@ -6,7 +6,7 @@ metadata:
   name: train
   namespace: myapps
 spec:
-  replicas: 2 # hoeveel pods hebben we nodig?
+  replicas: 1 # hoeveel pods hebben we nodig?
   selector:
     matchLabels:
       app: train
@@ -19,15 +19,17 @@ spec:
       - image: gcr.io/light-quest-289208/train:0.0.1    # moet nog aangepast worden afhenkelijk van uiteindelijk image naam voorbeeld: gcr.io/de2020/trainingdbapi:0.0.1 # Docker image name, that we pushed to GCR
         name: train-api     # POD name
         volumeMounts:
-        - mountPath: /usr/src/tdb #waarschijnlijk nog aanpassen
-          name: train-vol
+        - mountPath: /usr/src/myapp/model
+          name: model-repo
         ports:
         - containerPort: 5000
           protocol: TCP
         env:
-        - name: DB_LOC
-          value: /usr/src/tdb/
+        - name: MODEL-REPO
+          value: /usr/src/myapp/model
+        - name: DATA_CONTAINER
+          value: http://data_container-service:5000/data_container
       volumes:
-      - name: train-vol
+      - name: model-repo
         persistentVolumeClaim:
-          claimName: nfs-data
+          claimName: nfs-model-repo
