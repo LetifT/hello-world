@@ -54,6 +54,7 @@ def load_data(table_name):
     #download data and transform in DF
     fmnist = openml.datasets.get_dataset(40996)
     X, y, _, _ = fmnist.get_data(target=fmnist.default_target_attribute)
+    X, _, y, _ = train_test_split(X, y, train_size=0.1)
     y = y.astype(int)
     df = X
     df["labels"] = y
