@@ -30,6 +30,6 @@ spec:
         - name: DATA_API
           value: http://data-container-service:5000/data_container/test
       volumes:
-      - name: model-repo
-        persistentVolumeClaim:
-          claimName: nfs-model-repo
+        - name: model-repo
+          persistentVolumeClaim:
+            claimName: nfs-model-repo
