@@ -25,9 +25,9 @@ spec:
         - containerPort: 5000
           protocol: TCP
         env:
-        - name: MODEL-REPO
+        - name: MODEL_REPO
           value: /usr/src/model
-        - name: DATA_CONTAINER
+        - name: DATA_API
           value: http://data-container-service:5000/data-container/test
       volumes:
       - name: model-repo
