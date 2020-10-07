@@ -1,9 +1,10 @@
-from flask import Flask, request, make_response, Response
+from flask import Flask, request, make_response, Response, json
 import os
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 import io
 from resources.plotting import plot_pred
 import pandas as pd
+import requests
 # https://stackoverflow.com/questions/50728328/python-how-to-show-matplotlib-in-flask
 # https://gist.github.com/rduplain/1641344
 app = Flask(__name__)
