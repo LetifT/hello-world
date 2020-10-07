@@ -5,13 +5,13 @@ WORKDIR /usr/src/myapp
 # Copy requirements.txt  to the working directory
 COPY requirements.txt .
 # Install required python packages
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txts
 # Copy all files in training-db local host directory to /usr/src/myapp in Docker container
 COPY . .
 # Expose the port that our app.py runs in
 EXPOSE 5000
 # Enviroment Variables
-ENV MODEL_REPO /usr/src/models
+ENV MODEL_REPO /usr/src/model
 ENV DATA_API  http://data_container-service:5000/data_container/predict
 # Run our App
 CMD ["python3","app.py"]
