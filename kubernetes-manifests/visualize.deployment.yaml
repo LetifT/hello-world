@@ -27,8 +27,8 @@ spec:
         env:
         #- name: MODEL-REPO
         #  value: /usr/src/myapp/model
-        - name: DATA_CONTAINER
-          value: http://data-container-service:5000/data-container
+        - name: DATA_API
+          value: http://data-container-service:5000/data-container/predict
       #volumes:
       #- name: data-container
       #  persistentVolumeClaim:

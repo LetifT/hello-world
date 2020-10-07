@@ -10,11 +10,17 @@ app = Flask(__name__)
 
 @app.route('/visualisation/plot_predict.png', methods = ['GET'])
 def visualisation():
+        """"
+        local solution
         predictions = request.get_json() # NOW IT'S A INPUT OF THE REQUEST BUT HAS TO BE ENVIR VAR
         df = pd.read_json(r"test_data.json", orient="split")  # IS LOCAL (HAS TO BE ENVIR VAR I THINK)
+        """
+        data_api = os.environ['DATA_API']
+        data_json = requests.get(data_api).json()
+        df = pd.DataFrame.from_dict(data_json)
 
         # Plot function to visualize a subset of the images with the predictions of the model
-        figure = plot_pred(df, predictions['labels_pred'])
+        figure = plot_pred(df)
 
         # figure is written to a png file
         result = io.BytesIO()

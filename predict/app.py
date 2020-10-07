@@ -21,14 +21,20 @@ def predict_classifier(clf):
     with open('column_names.json') as f:
         column_names = json.load(f)
 
-    API_adress = request.remote_addr
-    requests.post('http://' + API_adress + ':5000/data_container/test_data', json = column_names)
-    requests.put('http://' + API_adress + ':5000/data_container/test_data', json= content)
+    X_test = df.loc[:, df.columns != 'labels']
 
+    # Select label
     # Prediction with model
-    prediction = predict(df, clf)
+    pred, message = predict(X_test, clf)
+    df = X_test
+    df['labels'] = pred
+    API_adress = os.environ['DATA_API']
+    content = df.to_json(orient='records')
 
-    return prediction
+    requests.post(API_adress, json=column_names)
+    requests.put(API_adress, json=content)
+
+    return message
 
 app.config["DEBUG"] = True
 app.run(host='0.0.0.0', port=5000)

@@ -11,8 +11,8 @@ COPY resources .
 # Expose the port that our app.py runs in
 EXPOSE 5000
 # Enviroment Variables
-ENV MODEL_API http://train:5000/train/clf
-ENV DATA_API  http://data_container-service:5000/data_container/table_name
+ENV MODEL_REPO /usr/src/models
+ENV DATA_API  http://data_container-service:5000/data_container/predict
 # Run our App
 CMD ["python3","app.py"]
 

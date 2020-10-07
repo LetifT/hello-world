@@ -4,9 +4,9 @@ import json
 from joblib import load
 
 def predict(df,clf):
-    model_api = os.environ("MODEL_API")
-    clf = requests.get(model_api)
-
+    model_repo = os.environ['MODEL_REPO']
+    file_path = os.path.join(model_repo, "clf.joblib")
+    clf = load(file_path, 'clf.joblib')
     X_test = df
 
     # predict and put it in the right format
@@ -15,17 +15,8 @@ def predict(df,clf):
 
     #pred_api = os.environ['PRED_API']
     #json.dump(pred_dict, open('prediction.json', 'w'))
-    return json.dumps({'message': 'The predictions were saved locally.',
-                        'prediction': pred_dict['labels_pred'],
-                        'real': y_test}, sort_keys=False, indent=4), 200
+    return pred, json.dumps({'message': 'The predictions were saved locally.',
+                        'prediction': pred_dict['labels_pred']}, sort_keys=False, indent=4), 200
 
-    pred_api = os.environ['PRED_REPO']
-        if pred_api:
-            pred.save(os.path.join(pred_api), "predictions")
-            return 'Model predictions are created'
 
-    else:
-
-        return "Model can't be found"
-        
 
