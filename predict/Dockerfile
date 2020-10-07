@@ -12,7 +12,7 @@ COPY . .
 EXPOSE 5000
 # Enviroment Variables
 ENV MODEL_REPO /usr/src/model
-ENV DATA_API  http://data_container-service:5000/data_container/predict
+ENV DATA_API  http://data-container-service:5000/data_container/predict
 # Run our App
 CMD ["python3","app.py"]
 
