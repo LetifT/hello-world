@@ -4,6 +4,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from joblib import dump
+from flask import json
 import os
 import pandas as pd
 import json

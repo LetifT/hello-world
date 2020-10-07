@@ -37,8 +37,8 @@ def read_data(table_name):
 @app.route('/data_container/<table_name>', methods = ['PATCH'])
 def load_data_from_url(table_name):
     message = load_data(table_name)
-
     return message
+
 
 app.config["DEBUG"] = True
 app.run(host='0.0.0.0', port=5000)
