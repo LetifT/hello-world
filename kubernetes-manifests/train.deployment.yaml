@@ -19,16 +19,16 @@ spec:
       - image: gcr.io/light-quest-289208/train:0.0.1    # moet nog aangepast worden afhenkelijk van uiteindelijk image naam voorbeeld: gcr.io/de2020/trainingdbapi:0.0.1 # Docker image name, that we pushed to GCR
         name: train-api     # POD name
         volumeMounts:
-        - mountPath: /usr/src/myapp/model
+        - mountPath: /usr/src/model
           name: model-repo
         ports:
         - containerPort: 5000
           protocol: TCP
         env:
         - name: MODEL-REPO
-          value: /usr/src/myapp/model
+          value: /usr/src/model
         - name: DATA_CONTAINER
-          value: http://data-container-service:5000/data-container
+          value: http://data-container-service:5000/data-container/test
       volumes:
       - name: model-repo
         persistentVolumeClaim:
