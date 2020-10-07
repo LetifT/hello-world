@@ -25,10 +25,10 @@ spec:
         - containerPort: 5000
           protocol: TCP
         env:
-        - name: MODEL_API
-          value: http://train:5000/train/clf
+        - name: PRED_REPO
+          value: /usr/src/models
         - name: DATA_API
-          value: http://data-container-service:5000/data_container/test #?? moet hier nog iets achter
+          value: http://data-container-service:5000/data_container/predict #?? moet hier nog iets achter
       volumes:
         - name: model-repo
           persistentVolumeClaim:
