@@ -7,7 +7,7 @@ def plot_pred(test_set):
 
     class_names = {0: "T-shirt/top", 1: "Trouser", 2: "Pullover", 3: "Dress", 4: "Coat", 5: "Sandal",
                     6: "Shirt", 7: "Sneaker", 8: "Bag", 9: "Ankle boot"}
-    pred = list(test_set.loc['labels'])
+    pred = list(test_set['labels'])
     x = test_set.loc[:, test_set.columns != 'labels']
 
     # Select the first 4 images
