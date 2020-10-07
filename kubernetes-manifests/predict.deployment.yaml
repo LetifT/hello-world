@@ -28,7 +28,7 @@ spec:
         - name: MODEL_API
           value: http://train:5000/train/clf
         - name: DATA_API
-          value: http://data-container:5000/data_container/table_name
+          value: http://data-container:5000/data_container/ # moet hier nog iets achter
       volumes:
         - name: model-repo
           persistentVolumeClaim:
