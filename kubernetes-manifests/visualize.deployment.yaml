@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: train
+        app: visualize
     spec:
       containers:
       - image: gcr.io/light-quest-289208/viualize:0.0.1    # moet nog aangepast worden afhenkelijk van uiteindelijk image naam voorbeeld: gcr.io/de2020/trainingdbapi:0.0.1 # Docker image name, that we pushed to GCR
@@ -29,7 +29,7 @@ spec:
         #  value: /usr/src/myapp/model
         - name: DATA_CONTAINER
           value: http://data-container-service:5000/data-container
-      volumes:
-      - name: data-container
-        persistentVolumeClaim:
-          claimName: nfs-pvc-train
+      #volumes:
+      #- name: data-container
+      #  persistentVolumeClaim:
+      #    claimName: nfs-pvc-train
