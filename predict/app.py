@@ -30,7 +30,7 @@ def predict_classifier(clf):
     df = X_test
     df['labels'] = pred
     API_adress = os.environ['DATA_API']
-    content = df
+    content = df.to_dict(orient='records')
     requests.post(API_adress, json=column_names)
     requests.put(API_adress, json=content)
 
