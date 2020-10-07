@@ -21,7 +21,6 @@ def train(df):
 
     # Select features
     X = df.loc[:, df.columns != 'labels']
-    X = X.loc[:, X.columns != 'id']
     # Select label
     y = df['labels']
     X_train, X_validate, y_train, y_validate = train_test_split(X, y, train_size= 0.9)

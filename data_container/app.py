@@ -28,6 +28,7 @@ def update_data(table_name):
 @app.route('/data_container/<table_name>', methods=['GET'])
 def read_data(table_name):
     df = read_data_records(table_name)
+    df = df.drop(columns=['id'])
     resp = Response(df.to_json(orient='records'), status=200, mimetype='application/json')
     resp.headers['Access-Control-Allow-Origin'] = '*'
     resp.headers['Access-Control-Allow-Methods'] = 'POST'
