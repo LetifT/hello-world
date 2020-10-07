@@ -5,7 +5,7 @@ WORKDIR /usr/src/myapp
 # Copy requirements.txt  to the working directory
 COPY requirements.txt .
 # Install required python packages
-RUN pip install --no-cache-dir -r requirements.txts
+RUN pip install --no-cache-dir -r requirements.txt
 # Copy all files in training-db local host directory to /usr/src/myapp in Docker container
 COPY . .
 # Expose the port that our app.py runs in
