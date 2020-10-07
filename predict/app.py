@@ -31,7 +31,7 @@ def predict_classifier(clf):
     df['labels'] = pred
     API_adress = os.environ['DATA_API']
     content = df.to_json(orient='records')
-    parsed = json.load(content)
+    parsed = json.loads(content)
     records = json.dumps(parsed)
     column_names = json.dumps(column_names)
     requests.post(API_adress, json=column_names)
