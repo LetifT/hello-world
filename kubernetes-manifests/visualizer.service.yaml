@@ -11,4 +11,4 @@ spec:
   - port: 5003
     targetPort: 5000
   selector:
-    app: predict
+    app: visualizer
