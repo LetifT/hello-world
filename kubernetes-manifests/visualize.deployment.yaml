@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: visualize
+  name: visualize
+  namespace: myapps
+spec:
+  replicas: 2 # hoeveel pods hebben we nodig?
+  selector:
+    matchLabels:
+      app: visualize
+  template:
+    metadata:
+      labels:
+        app: train
+    spec:
+      containers:
+      - image: gcr.io/light-quest-289208/viualize:0.0.1    # moet nog aangepast worden afhenkelijk van uiteindelijk image naam voorbeeld: gcr.io/de2020/trainingdbapi:0.0.1 # Docker image name, that we pushed to GCR
+        name: visualize-api     # POD name
+        volumeMounts:
+        - mountPath:  /usr/src/myapp/model        #vgm moeten deze nog aangepast worden
+          name: model-repo
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        env:
+        #- name: MODEL-REPO
+        #  value: /usr/src/myapp/model
+        - name: DATA_CONTAINER
+          value: http://data-container-service:5000/data-container
+      volumes:
+      - name: data-container
+        persistentVolumeClaim:
+          claimName: nfs-pvc-train
