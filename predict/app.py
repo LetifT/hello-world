@@ -7,18 +7,19 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/predict/<clf>', methods = ['POST'])
+
+@app.route('/predict/<clf>', methods=['POST'])
 def predict_classifier(clf):
-    #local solution
-    #df = pd.read_json(r"test_data.json", orient="split") #PATHHHHH
+    # local solution
+    # df = pd.read_json(r"test_data.json", orient="split") #PATHHHHH
 
-    #clf = load("clf.joblib")
+    # clf = load("clf.joblib")
 
-    #enviroment solution
+    # enviroment solution
     content = request.get_json()
     df = pd.read_json(json.dumps(content), orient='records')
 
-    with open('column_names.json') as f:
+    with open('resources/column_names.json') as f:
         column_names = json.load(f)
 
     X_test = df.loc[:, df.columns != 'labels']
@@ -35,6 +36,7 @@ def predict_classifier(clf):
     requests.put(API_adress, json=content)
 
     return message
+
 
 app.config["DEBUG"] = True
 app.run(host='0.0.0.0', port=5000)
