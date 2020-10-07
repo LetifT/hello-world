@@ -19,14 +19,14 @@ spec:
       - image: gcr.io/light-quest-289208/predict:0.0.1 # Docker image name, that we pushed to GCR
         name: predict-api     # POD name
         volumeMounts:
-        - mountPath: /usr/src/models
+        - mountPath: /usr/src/model
           name: model-repo
         ports:
         - containerPort: 5000
           protocol: TCP
         env:
         - name: MODEL_REPO
-          value: /usr/src/models
+          value: /usr/src/model
         - name: DATA_API
           value: http://data-container-service:5000/data_container/predict #?? moet hier nog iets achter
       volumes:
