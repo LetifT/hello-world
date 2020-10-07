@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: visualize
-  name: visualize
+    app: visualizer
+  name: visualizer
   namespace: myapps
 spec:
   replicas: 1 # hoeveel pods hebben we nodig?
   selector:
     matchLabels:
-      app: visualize
+      app: visualizer
   template:
     metadata:
       labels:
-        app: visualize
+        app: visualizer
     spec:
       containers:
       - image: gcr.io/light-quest-289208/viualizer:0.0.1    # moet nog aangepast worden afhenkelijk van uiteindelijk image naam voorbeeld: gcr.io/de2020/trainingdbapi:0.0.1 # Docker image name, that we pushed to GCR
-        name: visualize-api     # POD name
+        name: visualizer-api     # POD name
         #volumeMounts:
         #- mountPath:  /usr/src/myapp/model        #vgm moeten deze nog aangepast worden
         #  name: model-repo
