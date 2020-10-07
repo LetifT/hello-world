@@ -24,6 +24,7 @@ spec:
         ports:
         - containerPort: 5000
           protocol: TCP
+        imagePullPolicy: Always
         env:
         - name: MODEL_REPO
           value: /usr/src/model
