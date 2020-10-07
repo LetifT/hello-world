@@ -34,7 +34,7 @@ def train(df):
     clf_REPO = os.environ['MODEL_REPO']
     #if clf_api:                                            #hebben we gecomment
         #dump(clf, os.path.join(clf_api, 'clf.joblib'))
-    file_path = os.path.join(clf_REPO, "clf.joblib")        #moet naar achter als erboven wordt uncomment
+    file_path = os.path.join(clf_REPO, "clf.joblib")
     dump(clf, file_path)
     return json.dumps({'message': 'The model was saved locally at ' + file_path,
                        'accuracy test':  accuracy_test,

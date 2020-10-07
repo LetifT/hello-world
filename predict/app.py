@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from flask import Flask, request
+from flask import Flask, request, json
 from resources.predict_classifier import predict
 from joblib import dump, load
 import requests
