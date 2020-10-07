@@ -16,7 +16,3 @@ ENV DATA_API  http://data-container-service:5000/data_container/predict
 # Run our App
 CMD ["python3","app.py"]
 
-# We can also use an ENTRYPOINT and a CMD
-# Run our App
-#ENTRYPOINT ["python3"]
-#CMD ["app.py.py"]

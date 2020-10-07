@@ -6,7 +6,7 @@ metadata:
   name: train
   namespace: myapps
 spec:
-  replicas: 1 # hoeveel pods hebben we nodig?
+  replicas: 1
   selector:
     matchLabels:
       app: train
@@ -16,7 +16,7 @@ spec:
         app: train
     spec:
       containers:
-      - image: gcr.io/light-quest-289208/train:0.0.1    # moet nog aangepast worden afhenkelijk van uiteindelijk image naam voorbeeld: gcr.io/de2020/trainingdbapi:0.0.1 # Docker image name, that we pushed to GCR
+      - image: gcr.io/light-quest-289208/train:0.0.1
         name: train-api     # POD name
         volumeMounts:
         - mountPath: /usr/src/model

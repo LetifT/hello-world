@@ -50,7 +50,7 @@ def read_data_records(table_name):
 
 
 def load_data(table_name):
-
+    #This does not work in the kubernetes
     #download data and transform in DF
     fmnist = openml.datasets.get_dataset(40996)
     X, y, _, _ = fmnist.get_data(target=fmnist.default_target_attribute)

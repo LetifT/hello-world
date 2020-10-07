@@ -12,10 +12,10 @@ app = Flask(__name__)
 def predict_classifier(clf):
     # local solution
     # df = pd.read_json(r"test_data.json", orient="split") #PATHHHHH
-
     # clf = load("clf.joblib")
 
-    # enviroment solution
+
+    # Enviroment solution
     content = request.get_json()
     df = pd.read_json(json.dumps(content), orient='records')
 

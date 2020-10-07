@@ -14,8 +14,7 @@ def predict(df,clf):
     pred_dict= {'labels_pred': pred}
     message = json.dumps({'message': 'The predictions were saved locally.',
                         'prediction': pred_dict['labels_pred']}, sort_keys=False, indent=4), 200
-    #pred_api = os.environ['PRED_API']
-    #json.dump(pred_dict, open('prediction.json', 'w'))
+
     return pred, message
 
 

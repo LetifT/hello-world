@@ -17,13 +17,6 @@ def train_classifier(clf):
 
     return message
 
-@app.route('/train/<clf>', methods = ['GET'])
-def get_model(clf):
-    model_repo = os.environ['MODEL_REPO']
-    file_path = os.path.join(model_repo, "clf.joblib")
-    clf = load(file_path)
-    return clf
-
 
 app.config["DEBUG"] = True
 app.run(host='0.0.0.0', port=5000)

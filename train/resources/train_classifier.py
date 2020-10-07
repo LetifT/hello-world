@@ -10,10 +10,14 @@ import pandas as pd
 import json
 
 def train(df):
-    #data_repo = os.path.join('hello-world/data_container/' "data.json") #os.environ['DATA_REPO']
-    #print(data_repo)
-    #data_repo = "hello-world\data_container\resources\data.json"
 
+    # local solution
+
+    """
+    data_repo = os.path.join('hello-world/data_container/' "data.json") #os.environ['DATA_REPO']
+    print(data_repo)
+    data_repo = "hello-world\data_container\resources\data.json"
+"""
 
     # Select features
     X = df.loc[:, df.columns != 'labels']
@@ -32,8 +36,6 @@ def train(df):
 
 
     clf_REPO = os.environ['MODEL_REPO']
-    #if clf_api:                                            #hebben we gecomment
-        #dump(clf, os.path.join(clf_api, 'clf.joblib'))
     file_path = os.path.join(clf_REPO, "clf.joblib")
     dump(clf, file_path)
     return json.dumps({'message': 'The model was saved locally at ' + file_path,
