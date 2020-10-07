@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: predict-service
+  name: visualize-service
   labels:
-    app: predict
+    app: visualize
   namespace: myapps
 spec:
   type: LoadBalancer
