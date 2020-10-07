@@ -6,7 +6,7 @@ from joblib import load
 def predict(df,clf):
     model_repo = os.environ['MODEL_REPO']
     file_path = os.path.join(model_repo, "clf.joblib")
-    clf = load(file_path, 'clf.joblib')
+    clf = load(file_path)
     X_test = df
 
     # predict and put it in the right format
