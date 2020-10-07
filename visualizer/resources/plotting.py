@@ -9,6 +9,8 @@ def plot_pred(test_set):
                     6: "Shirt", 7: "Sneaker", 8: "Bag", 9: "Ankle boot"}
     pred = list(test_set['labels'])
     x = test_set.loc[:, test_set.columns != 'labels']
+    x = x.loc[:, x.columns != 'id']
+
 
     # Select the first 4 images
     x = np.array(x.iloc[:5])
