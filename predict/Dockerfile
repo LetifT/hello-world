@@ -12,7 +12,7 @@ COPY resources .
 EXPOSE 5000
 # Enviroment Variables
 ENV MODEL_API http://train:5000/train/clf
-ENV DATA_API  http://data_container:5000/data_container/table_name
+ENV DATA_API  http://data_container-service:5000/data_container/table_name
 # Run our App
 CMD ["python3","app.py"]
 
