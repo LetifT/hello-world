@@ -3,7 +3,7 @@ import requests
 from flask import Flask, request, json
 from resources.train_classifier import train
 import pandas as pd
-
+import json
 
 app = Flask(__name__)
 import os

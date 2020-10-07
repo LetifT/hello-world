@@ -20,7 +20,7 @@ def create_tb(table_name, column_names):
     v_table = Table(table_name, Base.metadata, Column('id', Integer, primary_key=True, autoincrement=True),
                     extend_existing=True, *columns)
     v_table.create(engine, checkfirst=True)
-
+    trans.commit()
 
 def drop_tb(table_name):
     conn = engine.connect()
