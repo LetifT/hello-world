@@ -18,9 +18,9 @@ spec:
       containers:
       - image: gcr.io/light-quest-289208/viualize:0.0.1    # moet nog aangepast worden afhenkelijk van uiteindelijk image naam voorbeeld: gcr.io/de2020/trainingdbapi:0.0.1 # Docker image name, that we pushed to GCR
         name: visualize-api     # POD name
-        volumeMounts:
-        - mountPath:  /usr/src/myapp/model        #vgm moeten deze nog aangepast worden
-          name: model-repo
+        #volumeMounts:
+        #- mountPath:  /usr/src/myapp/model        #vgm moeten deze nog aangepast worden
+        #  name: model-repo
         ports:
         - containerPort: 5000
           protocol: TCP
