@@ -1,5 +1,5 @@
 from flask import Flask, request, make_response, Response
-
+import os
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 import io
 from resources.plotting import plot_pred
