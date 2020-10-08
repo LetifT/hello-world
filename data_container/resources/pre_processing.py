@@ -43,7 +43,7 @@ def read_data_records(table_name):
     v_table = Base.metadata.tables[table_name]
     connection = engine.connect()
     trans = connection.begin()
-    query = db.select([v_table]).limit(100)
+    query = db.select([v_table]).limit(1000)
     df = pd.read_sql_query(query, con=connection)
     trans.commit()
     return df
