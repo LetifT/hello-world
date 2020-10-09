@@ -66,7 +66,7 @@ def load_data(table_name):
     v_table = Table(table_name, Base.metadata, Column('id', Integer, primary_key=True, autoincrement=True),
                     extend_existing=True, *columns)
     v_table.create(engine, checkfirst=True)
-    return json.dumps({'message': 'The data was saved locally.'}, #hoort hier niet
+    return json.dumps({'message': 'The data was saved locally.'},
                       sort_keys=False, indent=4), 200
 
 
